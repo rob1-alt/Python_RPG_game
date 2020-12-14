@@ -21,64 +21,73 @@
 # fen.mainloop()
 
 import cmd
-import os 
+import os
 import time 
-import sys 
+import sys
 import random
 screen_width = 200
 
+class player:
+    def __init__(self):
+        self.name = ''
+        self.feeling = ''
+        self.astrological = ''
+        self.position = 'ground'
+        self.won = False
+        self.solves = 0
+player1 = player()
+
+
 def title_screen_options():
 	#Allows the player to select the menu options, case-insensitive.
-	print("""
-
- ________       ___    ___  ________   _______    ________   ________   ___  ___   ________    ___  __       
-|\   ____\     |\  \  /  /||\   __  \ |\  ___ \  |\   __  \ |\   __  \ |\  \|\  \ |\   ___  \ |\  \|\  \     
-\ \  \___|     \ \  \/  / /\ \  \|\ /_\ \   __/| \ \  \|\  \\ \  \|\  \\ \  \\\  \\ \  \\ \  \\ \  \/  /|_   
- \ \  \         \ \    / /  \ \   __  \\ \  \_|/__\ \   _  _\\ \   ____\\ \  \\\  \\ \  \\ \  \\ \   ___  \  
-  \ \  \____     \/  /  /    \ \  \|\  \\ \  \_|\ \\ \  \\  \|\ \  \___| \ \  \\\  \\ \  \\ \  \\ \  \\ \  \ 
-   \ \_______\ __/  / /       \ \_______\\ \_______\\ \__\\ _\ \ \__\     \ \_______\\ \__\\ \__\\ \__\\ \__\
-    \|_______||\___/ /         \|_______| \|_______| \|__|\|__| \|__|      \|_______| \|__| \|__| \|__| \|__|
-              \|___|/                                                                                        
-                                                                                                             
-                                                                                                             
-
-""")
-
- 
 	option = input("> ")
 	if option.lower() == ("play"):
 		setup_game()
 	elif option.lower() == ("quit"):
 		sys.exit()
-	elif option.lower() == ("help"):
-		help_menu()		
-	while option.lower() not in ['play', 'help', 'quit']:
+	while option.lower() not in ['play','quit']:
 		print("Invalid command, please try again.")
 		option = input("> ")
 		if option.lower() == ("play"):
 			setup_game()
 		elif option.lower() == ("quit"):
 			sys.exit()
-		elif option.lower() == ("help"):
-			help_menu()
+
 
 def title_screen():
-	#Clears the terminal of prior code for a properly formatted title screen.
-	os.system('clear')
 	#Prints the pretty title.
 	print('#' * 45)
-	print('#  Salut à toi mon grand   #')
-	print("#  Keller,Pierre,Pautigny  #")
+	print('#          Salut à toi mon grand          #')
+	print("#          Keller,Pierre,Pautigny         #")
 	print('#' * 45)
 	print("                 .: Play :.                  ")
-	print("                 .: Help :.                  ")
 	print("                 .: Quit :.                  ")
 	title_screen_options()
 
+
+
 def setup_game():
-    os.system('clear')
+	#Clears the terminal for the game to start.
+	os.system('clear')
 
+	#QUESTION NAME: Obtains the player's name.
+	question1 = "Salut c'est quoi ton petit nom????\n"
+	for character in question1:
+		#This will occur throughout the intro code.  It allows the string to be typed gradually - like a typerwriter effect.
+		sys.stdout.write(character)
+		sys.stdout.flush()
+		time.sleep(0.05)
+	player_name = input("> ")
+	player1.name = player_name
 
+	#QUESTION FEELING: Obtains the player's feeling.
+	question2 = "Mon cher ami " + player1.name + ", comment vas tu ?\n"
+	for character in question2:
+		sys.stdout.write(character)
+		sys.stdout.flush()
+		time.sleep(0.05)
+	feeling = input("> ")
+	player1.feeling = feeling.lower()
 
 
 title_screen()

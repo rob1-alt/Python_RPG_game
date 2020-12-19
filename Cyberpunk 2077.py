@@ -1,3 +1,4 @@
+#import the wanted librairies 
 
 import os
 import cmd
@@ -6,11 +7,29 @@ import sys
 import random
 os.system("color 5")
 
+#create the player we need, self name and solves
 class player:
     def __init__(self):
         self.name = ''
         self.solves = 0
 player1 = player()
+
+
+# permission is the password in the : README.md
+def permission_game():
+	option = input(" Entrez le mot de passe : ")
+	if option.lower() == ("futureisnow"):
+		title_game()
+	while option.lower() not in ['futureisnow']:
+		print("Mot de passe invalide")
+		option = input(" Veuillez réessayer : ")
+		if option.lower() == ("futureisnow"):
+			title_game()
+
+# game options:
+# TODO : 
+# options --> sound, graphics?, save 
+# help ?
 
 
 def title_game_options():
@@ -40,11 +59,11 @@ def title_game():
 
 
 
+
+
 def setup_game():
 
-
-
-	question1 = "Salut c'est quoi ton petit nom????\n" 
+	question1 = "\n Salut comment t'appelles tu ?\n" 
 	for character in question1:
 		sys.stdout.write(character)
 		sys.stdout.flush()
@@ -69,4 +88,5 @@ def setup_game():
 	player1.why = why.lower()
 
 
-title_game()
+permission_game()  
+#processing the game

@@ -1,4 +1,4 @@
-#import the wanted librairies 
+#import the librairies we used for this project 
 
 import os
 import cmd
@@ -39,7 +39,7 @@ def title_game_options():
 	elif option.lower() == ("quit"):
 		sys.exit()
 	while option.lower() not in ['play','quit']:
-		print("Invalid command, please try again.")
+		print(" Commande non reconnue, veuillez réessayer.")
 		option = input("> ")
 		if option.lower() == ("play"):
 			setup_game()
@@ -55,6 +55,7 @@ def title_game():
 	print('#' * 62)
 	print("                           .: Play :.                  ")
 	print("                           .: Quit :.                  ")
+	print("                         .: Settings :.                ")
 	title_game_options()
 
 
@@ -71,7 +72,7 @@ def setup_game():
 	player_name = input("> ")
 	player1.name = player_name
 
-	question2 = "Mon cher ami " + player1.name + ", comment vas tu ?\n"
+	question2 = " Mon cher ami " + player1.name + ", comment vas tu ?\n"
 	for character in question2:
 		sys.stdout.write(character)
 		sys.stdout.flush()
@@ -79,7 +80,7 @@ def setup_game():
 	feeling = input("> ")
 	player1.feeling = feeling.lower()
 
-	question3 = "Moi ça va super ! Dis moi " + player1.name + " , est tu prêt à plonger dans ce monde ? \n"
+	question3 = " Moi ça va super ! Dis moi " + player1.name + " , est tu prêt à plonger dans ce monde ? \n"
 	for character in question3:
 		sys.stdout.write(character)
 		sys.stdout.flush()
@@ -88,5 +89,18 @@ def setup_game():
 	player1.why = why.lower()
 
 
+	question4 = " Très bien " + player1.name + " et bien allons y ! \n"
+	for character in question4:
+		sys.stdout.write(character)
+		sys.stdout.flush()
+		time.sleep(0.05)
+	ready = input("> ")
+	player1.ready = ready.lower()
+
+
+	print(" Bien alors, placons les choses aujourd'hui nous ne sommes pas le : %s" + time.ctime())
+	time.sleep(0.05)
+
+
 permission_game()  
-#processing the game
+#processing the game and enter in our big world.

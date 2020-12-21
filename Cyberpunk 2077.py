@@ -5,6 +5,8 @@ import cmd
 import time 
 import sys
 import random
+import locale
+locale.setlocale(locale.LC_TIME,'')
 os.system("color 5")
 
 #create the player we need, self name and solves
@@ -98,7 +100,9 @@ def setup_game():
 	player1.ready = ready.lower()
 
 
-	print(" Bien alors, placons les choses aujourd'hui nous ne sommes pas le : %s" + time.ctime())
+	print(" Bien alors, placons les choses aujourd'hui nous ne sommes pas le \n " + time.strftime('%A %D/%m/%Y')  + " mais bien le 21 septembre 2077 ")
+	time.sleep(0.05)
+	print(" Tant de temps est passé nous t'attendions " + player1.name + " tu sais. Ce n'est pas facile après tout ce qu'il s'est passé. ")
 	time.sleep(0.05)
 
 

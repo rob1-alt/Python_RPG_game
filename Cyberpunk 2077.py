@@ -31,6 +31,7 @@ def permission_game():
 # game options:
 # TODO : 
 # options --> sound, graphics?, save 
+# réanimer le jeu, car pas d'histoire 
 # help ?
 
 
@@ -96,15 +97,24 @@ def setup_game():
 		sys.stdout.write(character)
 		sys.stdout.flush()
 		time.sleep(0.05)
-	ready = input("> ")
-	player1.ready = ready.lower()
+	
 
 
-	print(" Bien alors, placons les choses aujourd'hui nous ne sommes pas le \n " + time.strftime('%A %D/%m/%Y')  + " mais bien le 21 septembre 2077 ")
+	print(" Bien alors, placons les choses aujourd'hui nous ne sommes pas le \n " + time.strftime('%D %m %A')  + " mais bien le 21 septembre 2077 ")
 	time.sleep(0.05)
 	print(" Tant de temps est passé nous t'attendions " + player1.name + " tu sais. Ce n'est pas facile après tout ce qu'il s'est passé. ")
 	time.sleep(0.05)
+	print(" Tu est resté endormi bien longtemps, tu n'a donc surement pas vu les évolutions de notre monde ! ")
+	time.sleep(0.05)
+	print (" Ici tu affronteras les plus féroces des adversaires, Oh ça par exemple voici ton premier adversaire...")
+	input()
+
+	input("> ")
+
+
 
 
 permission_game()  
 #processing the game and enter in our big world.
+
+

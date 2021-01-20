@@ -16,7 +16,11 @@ class Player:
         self.weapon = ''
         self.current_weapon = ''
     def attack(self, enemy):
-        enemy.health -= self.current_attack
+        random_attack = random.randint(1, 8)
+        if (random_attack == 1):
+            print("tu as manqué ton coup !")
+        else:
+            enemy.health -= self.current_attack
     def death(self,):
         print('You died')
         print('RIP')
@@ -33,7 +37,11 @@ class Enemy:
         self.health = maxhealth
         self.attack = attack
     def attack_enemy(self, player):
-        player.health -= self.attack
+        random_enemy_attack = random.randint(1, 6)
+        if (random_enemy_attack == 1):
+            print("L'enmie à manqué son coup !")
+        else:
+            player.health -= self.attack
 
 def room_one():
     room('enemy_one', 'Maraudeur', 12, baseball_bat, 'première', 'faible')
@@ -123,5 +131,3 @@ def room(enemy_type, enemy_name, enemy_hp, enemy_weapon, room_nb, enemy_strngt):
                 player.death()
         else:
             print('Mauvaise commande')
-
-room_one()

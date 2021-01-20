@@ -36,314 +36,92 @@ class Enemy:
         player.health -= self.attack
 
 def room_one():
-    print('Tu arrives dans la première salle. Il y a un enemie faible')
-    enemy_one = Enemy('Maraudeur', 12, baseball_bat)
-    player = Player()
-    print("L'enmie a", enemy_one.health, "hp; Tu as", player.health, "hp")
-    print('Que veux tu faire ?')
-    while (player.health > 1 or enemy_one.health > 1):
-        option = input("> ")
-        if option == "Attaquer":
-            player.attack(enemy_one)
-            print('Tu as infligé', player.current_attack, "points de dégats")
-            print("L'ennemie a", enemy_one.health, "HP")
-            if (enemy_one.health <= 0):
-                player.win_room()
-                break
-            enemy_one.attack_enemy(player)
-            print("L'enemie t'as infligé", enemy_one.attack, "points de dégats")
-            print('Tu as', player.health, "HP")
-            if (player.health <= 0):
-                player.death()
-        else:
-            print('Mauvaise commande')
+    room('enemy_one', 'Maraudeur', 12, baseball_bat, 'première', 'faible')
     print('Veux tu aller à gauche ou à droite ?')
-    while (1):
-        option = input("> ")
-        if (option == 'Gauche'):
-            shortcut_room()
-            break
-        elif (option == 'Droite'):
-            street_room()
-            break
-        else:
-            print('Mauvaise Commande')
-
-
+    two_choice(shortcut_room, street_room)
 
 def shortcut_room():
-    print('Tu arrives dans la deuxième salle. Il y a un enemie moyen')
-    enemy_street = Enemy('Maraudeur', 16, knife)
-    player = Player()
-    print("L'enmie a", enemy_street.health, "hp; Tu as", player.health, "hp")
-    print('Que veux tu faire ?')
-    while (player.health > 1 or enemy_street.health > 1):
-        option = input("> ")
-        if option == "Attaquer":
-            player.attack(enemy_street)
-            print('Tu as infligé', player.current_attack, "points de dégats")
-            print("L'ennemie a", enemy_street.health, "HP")
-            if (enemy_street.health <= 0):
-                player.win_room()
-                break
-            enemy_street.attack_enemy(player)
-            print("L'enemie t'as infligé", enemy_street.attack, "points de dégats")
-            print('Tu as', player.health, "HP")
-            if (player.health <= 0):
-                player.death()
-        else:
-            print('Mauvaise commande')
+    room('shortcut_enemy', 'Maraudeur', 16, knife, 'Deuxième', 'normal')
     print('Veux tu aller à gauche ou à droite ?')
-    while (1):
-        option = input("> ")
-        if (option == 'Gauche'):
-            trapped_room()
-            break
-        elif (option == 'Droite'):
-            miniboss_room()
-            break
-        else:
-            print('Mauvaise Commande')
+    two_choice(trapped_room, miniboss_room)
 
 def street_room():
-    print('Tu arrives dans la deuxième salle. Il y a un enemie moyen')
-    enemy_street = Enemy('Maraudeur', 16, knife)
-    player = Player()
-    print("L'enmie a", enemy_street.health, "hp; Tu as", player.health, "hp")
-    print('Que veux tu faire ?')
-    while (player.health > 1 or enemy_street.health > 1):
-        option = input("> ")
-        if option == "Attaquer":
-            player.attack(enemy_street)
-            print('Tu as infligé', player.current_attack, "points de dégats")
-            print("L'ennemie a", enemy_street.health, "HP")
-            if (enemy_street.health <= 0):
-                player.win_room()
-                break
-            enemy_street.attack_enemy(player)
-            print("L'enemie t'as infligé", enemy_street.attack, "points de dégats")
-            print('Tu as', player.health, "HP")
-            if (player.health <= 0):
-                player.death()
-        else:
-            print('Mauvaise commande')
+    room('enemy_street', 'Maraudeur', 16, knife, 'Deuxième', 'normal')
     print('Veux tu aller à gauche ou à droite ?')
-    while (1):
-        option = input("> ")
-        if (option == 'Gauche'):
-            miniboss_room()
-            break
-        elif (option == 'Droite'):
-            trapped_room()
-            break
-        else:
-            print('Mauvaise Commande')
+    two_choice(miniboss_room, trapped_room)
 
 def miniboss_room():
-    print('Tu arrives dans la troisième salle. Il y a un miniboss')
-    enemy_street = Enemy('Royce', 26, Axe)
-    player = Player()
-    print("L'enmie a", enemy_street.health, "hp; Tu as", player.health, "hp")
-    print('Que veux tu faire ?')
-    while (player.health > 1 or enemy_street.health > 1):
-        option = input("> ")
-        if option == "Attaquer":
-            player.attack(enemy_street)
-            print('Tu as infligé', player.current_attack, "points de dégats")
-            print("L'ennemie a", enemy_street.health, "HP")
-            if (enemy_street.health <= 0):
-                player.win_room()
-                break
-            enemy_street.attack_enemy(player)
-            print("L'enemie t'as infligé", enemy_street.attack, "points de dégats")
-            print('Tu as', player.health, "HP")
-            if (player.health <= 0):
-                player.death()
-        else:
-            print('Mauvaise commande')
+    room('miniboss_enemy', 'Royce', 26, Axe, 'Troisième', 'fort')
     print('Veux tu aller à gauche ou à droite ?')
-    while (1):
-        option = input("> ")
-        if (option == 'Gauche'):
-            ground_floor_room()
-            break
-        elif (option == 'Droite'):
-            basement_room()
-            break
-        else:
-            print('Mauvaise Commande')
+    two_choice(ground_floor_room, basement_room)
 
 def ground_floor_room():
-    print('Tu arrives dans la quatrième salle. Il y a un maraudeur normal')
-    enemy_street = Enemy('Maraudeur', 16, knife)
-    player = Player()
-    print("L'enmie a", enemy_street.health, "hp; Tu as", player.health, "hp")
-    print('Que veux tu faire ?')
-    while (player.health > 1 or enemy_street.health > 1):
-        option = input("> ")
-        if option == "Attaquer":
-            player.attack(enemy_street)
-            print('Tu as infligé', player.current_attack, "points de dégats")
-            print("L'ennemie a", enemy_street.health, "HP")
-            if (enemy_street.health <= 0):
-                player.win_room()
-                break
-            enemy_street.attack_enemy(player)
-            print("L'enemie t'as infligé", enemy_street.attack, "points de dégats")
-            print('Tu as', player.health, "HP")
-            if (player.health <= 0):
-                player.death()
-        else:
-            print('Mauvaise commande')
+    room('grnd_flr_enemy', 'Maraudeur', 16, knife, 'quatrième', 'normal')
     print('Veux tu aller à gauche ou à droite ?')
-    while (1):
-        option = input("> ")
-        if (option == 'Gauche'):
-            first_floor_light()
-            break
-        elif (option == 'Droite'):
-            first_floor_heavy()
-            break
-        else:
-            print('Mauvaise Commande')
+    two_choice(first_floor_light, first_floor_heavy)
 
 def basement_room():
-    print('Tu arrives dans la quatrième salle. Il y a un maraudeur lourd')
-    enemy_street = Enemy('Maraudeur', 19, longsword)
-    player = Player()
-    print("L'enmie a", enemy_street.health, "hp; Tu as", player.health, "hp")
-    print('Que veux tu faire ?')
-    while (player.health > 1 or enemy_street.health > 1):
-        option = input("> ")
-        if option == "Attaquer":
-            player.attack(enemy_street)
-            print('Tu as infligé', player.current_attack, "points de dégats")
-            print("L'ennemie a", enemy_street.health, "HP")
-            if (enemy_street.health <= 0):
-                player.win_room()
-                break
-            enemy_street.attack_enemy(player)
-            print("L'enemie t'as infligé", enemy_street.attack, "points de dégats")
-            print('Tu as', player.health, "HP")
-            if (player.health <= 0):
-                player.death()
-        else:
-            print('Mauvaise commande')
+    room('basement_enemy', 'Maraudeur', 19, longsword, 'quatrième', 'lourd')
     print('Veux tu aller à gauche ou à droite ?')
-    while (1):
-        option = input("> ")
-        if (option == 'Gauche'):
-            first_floor()
-            break
-        elif (option == 'Droite'):
-            trapped_room()
-            break
-        else:
-            print('Mauvaise Commande')
+    two_choice(first_floor, trapped_room)
 
 def first_floor():
-    print('Tu arrives dans la cinquième salle. Il y a un maraudeur normal')
-    enemy_street = Enemy('Maraudeur', 16, knife)
-    player = Player()
-    print("L'enmie a", enemy_street.health, "hp; Tu as", player.health, "hp")
-    print('Que veux tu faire ?')
-    while (player.health > 1 or enemy_street.health > 1):
-        option = input("> ")
-        if option == "Attaquer":
-            player.attack(enemy_street)
-            print('Tu as infligé', player.current_attack, "points de dégats")
-            print("L'ennemie a", enemy_street.health, "HP")
-            if (enemy_street.health <= 0):
-                player.win_room()
-                break
-            enemy_street.attack_enemy(player)
-            print("L'enemie t'as infligé", enemy_street.attack, "points de dégats")
-            print('Tu as', player.health, "HP")
-            if (player.health <= 0):
-                player.death()
-        else:
-            print('Mauvaise commande')
+    room('first_floor', 'Maraudeur', 16, knife, 'cinquième', 'normal')
     print('Tu vas rentrer dans la salle du boss')
     boss_room()
 
-
 def first_floor_light():
-    print('Tu arrives dans la cinquième salle. Il y a un maraudeur faible')
-    enemy_street = Enemy('Maraudeur', 12, baseball_bat)
-    player = Player()
-    print("L'enmie a", enemy_street.health, "hp; Tu as", player.health, "hp")
-    print('Que veux tu faire ?')
-    while (player.health > 1 or enemy_street.health > 1):
-        option = input("> ")
-        if option == "Attaquer":
-            player.attack(enemy_street)
-            print('Tu as infligé', player.current_attack, "points de dégats")
-            print("L'ennemie a", enemy_street.health, "HP")
-            if (enemy_street.health <= 0):
-                player.win_room()
-                break
-            enemy_street.attack_enemy(player)
-            print("L'enemie t'as infligé", enemy_street.attack, "points de dégats")
-            print('Tu as', player.health, "HP")
-            if (player.health <= 0):
-                player.death()
-        else:
-            print('Mauvaise commande')
+    room('first_floor_light', 'Maraudeur', 12, baseball_bat, 'cinquième', 'faible')
     print('Tu vas rentrer dans la salle du boss')
     boss_room()
 
 def first_floor_heavy():
-    print('Tu arrives dans la cinquième salle. Il y a un maraudeur lourd')
-    enemy_street = Enemy('Maraudeur', 19, longsword)
-    player = Player()
-    print("L'enmie a", enemy_street.health, "hp; Tu as", player.health, "hp")
-    print('Que veux tu faire ?')
-    while (player.health > 1 or enemy_street.health > 1):
-        option = input("> ")
-        if option == "Attaquer":
-            player.attack(enemy_street)
-            print('Tu as infligé', player.current_attack, "points de dégats")
-            print("L'ennemie a", enemy_street.health, "HP")
-            if (enemy_street.health <= 0):
-                player.win_room()
-                break
-            enemy_street.attack_enemy(player)
-            print("L'enemie t'as infligé", enemy_street.attack, "points de dégats")
-            print('Tu as', player.health, "HP")
-            if (player.health <= 0):
-                player.death()
-        else:
-            print('Mauvaise commande')
+    room('first_floor_heavy', 'Maraudeur', 19, longsword, 'cinquième', 'lourd')
     print('Tu vas rentrer dans la salle du boss')
     boss_room()
 
 def boss_room():
-    print('Tu arrives dans la sixième salle. Il y a un maraudeur lourd')
-    enemy_street = Enemy('Maraudeur', 19, longsword)
-    player = Player()
-    print("L'enmie a", enemy_street.health, "hp; Tu as", player.health, "hp")
-    print('Que veux tu faire ?')
-    while (player.health > 1 or enemy_street.health > 1):
-        option = input("> ")
-        if option == "Attaquer":
-            player.attack(enemy_street)
-            print('Tu as infligé', player.current_attack, "points de dégats")
-            print("L'ennemie a", enemy_street.health, "HP")
-            if (enemy_street.health <= 0):
-                player.win_room()
-                break
-            enemy_street.attack_enemy(player)
-            print("L'enemie t'as infligé", enemy_street.attack, "points de dégats")
-            print('Tu as', player.health, "HP")
-            if (player.health <= 0):
-                player.death()
-        else:
-            print('Mauvaise commande')
+    room('first_floor_heavy', 'Maraudeur', 19, longsword, 'cinquième', 'lourd')
     print('Veux tu vas rentrer dans la salle du boss')
     print('Tu as gagner, gg')
     input("> ")
 
 def trapped_room():
     Player().death()
+
+def two_choice(room_one, room_two):
+    while (1):
+        option = input("> ")
+        if (option == 'Gauche'):
+            room_one()
+            break
+        elif (option == 'Droite'):
+            room_two()
+            break
+        else:
+            print('Mauvaise Commande')
+
+def room(enemy_type, enemy_name, enemy_hp, enemy_weapon, room_nb, enemy_strngt):
+    print('Tu arrives dans la', room_nb, 'salle. Il y a un enemie ', enemy_strngt)
+    enemy_type = Enemy('enemy_name', enemy_hp, enemy_weapon)
+    player = Player()
+    print("L'enmie a", enemy_type.health, "hp; Tu as", player.health, "hp")
+    print('Que veux tu faire ?')
+    while (player.health > 1 or enemy_type.health > 1):
+        option = input("> ")
+        if option == "Attaquer":
+            player.attack(enemy_type)
+            print('Tu as infligé', player.current_attack, "points de dégats")
+            print("L'ennemie a", enemy_type.health, "HP")
+            if (enemy_type.health <= 0):
+                player.win_room()
+                break
+            enemy_type.attack_enemy(player)
+            print("L'enemie t'as infligé", enemy_type.attack, "points de dégats")
+            print('Tu as', player.health, "HP")
+            if (player.health <= 0):
+                player.death()
+        else:
+            print('Mauvaise commande')
 
 room_one()

@@ -9,7 +9,7 @@ Katana = random.randint(20, 28)
 class Player:
     def __init__(self):
         self.name = ''
-        self.max_health = 30
+        self.max_health = 2
         self.health = self.max_health
         self.base_attack = 11
         self.current_attack = 11
@@ -27,7 +27,7 @@ class Player:
                 enemy.health -= self.current_attack
                 print('Tu as infligé', self.base_attack, 'points de dégats')
                 print("Le", enemy.name, "à", enemy.health, "HP !")
-    def death(self,):
+    def death(self):
         print('You died')
         print('RIP')
     def win_room(self):
@@ -35,10 +35,10 @@ class Player:
         exp_won = random.randint(32, 47)
         self.exp += exp_won
         print('-' * 60)
-        print('Tu as vaincu cet enemie !')
+        print('Tu as vaincu cet enemi !')
         print('Tu as gagné', exp_won, "points d'EXP !" )
         print('Tu as', self.exp, "XP !")
-        print("Ta santé est repassé à 30hp")
+        print("Ta santé est repassée à 30hp")
 
 
 
@@ -91,12 +91,16 @@ class Jeu:
 def main():
     game = Jeu(Player())
     while (game.player.health > 0):
-        while(game.room.enemy.health > 0):
-            game.player.attack(game.room.enemy)
+        while(game.room.enemy.health > 0 and game.player.health > 0):
+            game.player.attack(game.room.enemy) #player attaque l'ennemi
             if (game.room.enemy.health > 0):
                 game.room.enemy.attack_enemy(game.player)
-        game.player.win_room()
-        game.generate_room()
+            if (game.player.health <= 0):
+                game.player.death()
+        if (game.player.health > 0):
+            game.player.win_room()
+            game.generate_room()
+
     print("Git Gud")
 
 

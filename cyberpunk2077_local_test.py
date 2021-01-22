@@ -9,7 +9,7 @@ Katana = random.randint(20, 28)
 class Player:
     def __init__(self):
         self.name = ''
-        self.max_health = 2
+        self.max_health = 30
         self.health = self.max_health
         self.base_attack = 11
         self.current_attack = 11
@@ -20,7 +20,7 @@ class Player:
         print('Que veux tu faire ?')
         option = input('> ')
         random_attack = random.randint(1, 8)
-        if (option == 'Attaquer'):
+        if (option == 'attaquer'):
             if (random_attack == 1):
                 print("tu as manqué ton coup !")
             else:
@@ -51,10 +51,10 @@ class Enemy:
     def attack_enemy(self, player):
         random_enemy_attack = random.randint(1, 6)
         if (random_enemy_attack == 1):
-            print("L'enmie à manqué son coup !")
+            print("L'ennemi à manqué son coup !")
         else:
             player.health -= self.attack
-            print("L'enemie t'as infligé", self.attack, "points de dégats !")
+            print("L'ennemi t'as infligé", self.attack, "points de dégats !")
             print("Tu as", player.health, "HP !")
 
 class Room:

@@ -16,16 +16,16 @@ class Player:
         self.weapon = ''
         self.current_weapon = ''
         self.exp = 10
+        self.armor = 1
     def attack(self, enemy):
         print('coucou je suis la fonction attaquer')
         random_attack = random.randint(1, 8)
-        if (option == 'attaquer'):
-            if (random_attack == 1):
-                print("Tu as manqué ton coup !")
-            else:
-                enemy.health -= self.current_attack
-                print('Tu as infligé', self.base_attack, 'points de dégats')
-                print("Le", enemy.name, "à", enemy.health, "HP !")
+        if (random_attack == 1):
+            print("Tu as manqué ton coup !")
+        else:
+            enemy.health -= self.current_attack
+            print('Tu as infligé', self.base_attack, 'points de dégats')
+            print("Le", enemy.name, "à", enemy.health, "HP !")
     def death(self):
         print('Coucou je suis la fonction death')
         print('Tu es mort')
@@ -44,6 +44,9 @@ class Player:
         print('*' * 64)
         print('GG ! Tu as finis notre jeu')
         print('Tu avais', self.exp, 'XP !')
+    def parry(self):
+        self.armor = (random.randint(0, 30)) / 100
+        print('Tu as gagné', self.armor, "d'armure pour ce tour")
 
 class Enemy:
     def __init__(self, name, maxhealth, attack):
@@ -56,9 +59,11 @@ class Enemy:
         if (random_enemy_attack == 1):
             print("L'ennemi à manqué son coup !")
         else:
-            player.health -= self.attack
-            print("L'ennemi t'as infligé", self.attack, "points de dégats !")
+            enemy_damage = round(self.attack * player.armor)
+            player.health -= enemy_damage
+            print("L'ennemi t'as infligé", enemy_damage, "points de dégats !")
             print("Tu as", player.health, "HP !")
+            player.armor = 1
 
 class Room:
     def __init__(self, enemy_one):
@@ -79,7 +84,7 @@ class Jeu:
         # elif (option == 'droite'):
         #     room_type = random.randint(1, 30)
         if (player_exp >= 0 and player_exp < 100):
-            enemy_weak = None
+            enemy_weak = Enemy('Maraudeur', 12, baseball_bat)
             print('Méchant 1-------------')
             self.room = Room(enemy_weak)
         elif (player_exp >= 100 and player_exp < 200):
@@ -99,6 +104,9 @@ class Jeu:
 
 
 def main():
+    print('Quel est ton nom ?')
+    Player.name = input('')
+    print("Bienvenu", Player.name)
     game = Jeu(Player())
     while (game.player.health > 0):
         while(game.room.enemy.health > 0 and game.player.health > 0):
@@ -107,7 +115,7 @@ def main():
             if (option == "Attaquer"):
                 game.player.attack(game.room.enemy) #player attaque l'ennemi
             elif (option == "Parer"):
-                None
+                game.player.parry()
             else:
                 print('Mauvaise commande')
                 continue

@@ -52,8 +52,8 @@ class Player:   #Classe du joueur
         self.name = '' #Nom du joueur ajouter avec un input
         self.max_health = 30 #Santé max du joueur
         self.health = self.max_health #Santé actuelle du joueur
-        self.base_attack = 40 #Attaque de base du joueur
-        self.current_wp = 'Poing Américain' #Arme actuelle du joueur
+        self.base_attack = 10 #Attaque de base du joueur
+        self.current_wp = 'Matraque' #Arme actuelle du joueur
         self.exp = 10 #Expérience du joueur
         self.armor = 1 #Armure du joueur
         self.balance = 25 #Argent du joueur
@@ -71,11 +71,15 @@ class Player:   #Classe du joueur
     def win_room(self): #Fonction si le joueur gagne le combat (gagne la salle)
         self.health = 30 #Remettre la vie du joueur à 30 après chaque room
         exp_won = random.randint(32, 47) #combien d'éxpérience le joueur gagne si il gagne le combat
+        balance_won = random.randint(5, 40)
+        self.balance += balance_won
         self.exp += exp_won #Ajout de l'xp au joueur
         print('-' * 60)
         print('Tu as vaincu cet ennemi !')
         print('Tu as gagné', exp_won, "points d'EXP !" )
+        print('Tu as gagné', balance_won, 'Eurodollars')
         print('Tu as', self.exp, "XP !")
+        print('Tu as', self.balance, 'Eurosdollars')
         if (self.exp > 400):
             self.won_game = 1
     def game_win(self): #Fonction si le joueur tue le boss et gagne le jeu

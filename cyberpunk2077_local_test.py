@@ -1,5 +1,11 @@
 import random
 import array
+import os
+import cmd
+import sys
+os.system("color 5")
+
+
 
 #Le jeu manque encore de beaucoup d'ajouts et d'une séparation des classes dans plusieurs fichiers
 #Les armes sont implémentées, mais l'inventaire et le shop ont encore quelques soucis
@@ -171,7 +177,7 @@ class Jeu: #Classe du jeu, regroupant la création de la room des ennemies et du
 def main(): #Fonction du jeu
     print('Quel est ton nom ?')
     Player.name = input('')
-    print("Bienvenu", Player.name)
+    print("Bienvenue", Player.name)
     game = Jeu(Player()) #Création du joueur
     while (game.player.health > 0): #Boucle de la "vie du jeu", si le joueur meurt, la boucle s'arrête
         while(game.room.enemy.health > 0 and game.player.health > 0): #Si l'ennemie ou je joueur meurt, la boucle s'arrête

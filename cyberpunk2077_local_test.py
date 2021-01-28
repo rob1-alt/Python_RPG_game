@@ -7,6 +7,7 @@ os.system("color 5")
 
 
 
+
 #Le jeu manque encore de beaucoup d'ajouts et d'une séparation des classes dans plusieurs fichiers
 #Les armes sont implémentées, mais l'inventaire et le shop ont encore quelques soucis
 #Il n'y a pas de directions à prendre pour le moment, le jeu est linéaire
@@ -17,6 +18,44 @@ knife = random.randint(12, 18)
 longsword = random.randint(17, 22)
 Axe = random.randint(19, 25)
 Katana = random.randint(20, 28)
+
+
+def permission_game():
+	option = input(" Entrez le mot de passe : ")
+	if option.lower() == ("futureisnow"):
+		title_game()
+	while option.lower() not in ['futureisnow']:
+		print("Mot de passe invalide")
+		option = input(" Veuillez réessayer : ")
+		if option.lower() == ("futureisnow"):
+			title_game()
+
+
+
+
+def title_game_options():
+	option = input("> ")
+	if option.lower() == ("play"):
+		main()
+	elif option.lower() == ("quit"):
+		sys.exit()
+	while option.lower() not in ['play','quit']:
+		print("Invalid command, please try again.")
+		option = input("> ")
+		if option.lower() == ("play"):
+			main()
+		elif option.lower() == ("quit"):
+			sys.exit()
+
+
+def title_game():
+    print('#' * 62)
+	print('#          Bienvenue dans le monde de          #')
+	print("#                   Keller,Pierre,Pautigny                   #")
+	print('#' * 62)
+	print("                           .: Play :.                  ")
+	print("                           .: Quit :.                  ")
+	title_game_options()
 
 class Item: #Objet permettant de créer les armes du joueur qui seront disponibles dans le shop
     def __init__(self, name, damage, value):
@@ -250,13 +289,14 @@ main() #Fonction qui lance le jeu
 
 
 
-def shop():
-    print('Bienvenue au shop !')
-    weapon = None
+#           def shop():
+#   print('Bienvenue au shop !')
+#   weapon = None
     
-    if (Player.balance <= 0):
-        print('Vous n\'avez pas assez d\'argent')
-    else:
-        print('Voici la liste des armes présentes :')
-        shop.print_items()
-        print('Que voulez-vous acheter ?')
+#   if (Player.balance <= 0):
+#    print('Vous n\'avez pas assez d\'argent')
+#  else:
+#     print('Voici la liste des armes présentes :')
+#     shop.print_items()
+#     print('Que voulez-vous acheter ?')
+
